@@ -1,0 +1,26 @@
+version: 1
+formatters:
+  format_file:
+    format: '%(asctime)s [%(filename)s:%(lineno)d] %(levelname)s - %(message)s'
+  format_stdout:
+    format: '%(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: format_stdout
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: format_file
+    maxBytes: 1024000
+    backupCount: 3
+loggers:
+  notebook:
+    level: DEBUG
+    handlers: [console,file]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console,file]
