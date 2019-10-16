@@ -46,20 +46,21 @@ clean-test: ## remove test and coverage artifacts
 clean-venv: ## remove virtualenv
 	rm -rf ${VENV_NAME}
 
-venv: $(VENV_NAME)/bin/activate pip-sync
+venv: $(VENV_NAME)/bin/activate
 
 $(VENV_NAME)/bin/activate:
 	test -d $(VENV_NAME) || python3 -m venv $(VENV_NAME)
 	$(VENV_NAME)/bin/pip install -U pip pip-tools
+	$(VENV_NAME)/bin/pip install -e .
 
 pip-compile: ## compile requirements with pip-compile
 	$(VENV_NAME)/bin/pip-compile --quiet \
 		--upgrade \
 		--output-file requirements.txt  \
-		setup.py requirements*.in
+		setup.py requirements.in
 
 pip-sync: ## sync venv
-	$(VENV_NAME)/bin/pip-sync requirements*.txt
+	$(VENV_NAME)/bin/pip-sync requirements.txt
 
 test-all: venv pip-sync ## run tests on every Python version with tox
 	$(VENV_NAME)/bin/tox
