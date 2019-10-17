@@ -2,7 +2,7 @@ cookiecutter-ml-boilerplate
 ===========================
 
 Project based on the [cookiecutter data science project
-template]:(https://drivendata.github.io/cookiecutter-data-science/).
+template](https://drivendata.github.io/cookiecutter-data-science/).
 
 Requirements
 ------------
