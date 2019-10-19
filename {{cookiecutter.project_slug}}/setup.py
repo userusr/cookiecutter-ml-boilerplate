@@ -5,8 +5,8 @@
 
 from setuptools import find_packages, setup
 
-with open('requirements.in') as requirements_file:
-     requirements = requirements_file.read()
+with open("requirements.in") as requirements_file:
+    requirements = requirements_file.read()
 
 setup(
     name="{{cookiecutter.project_slug}}",

@@ -13,7 +13,8 @@ class Coordinator:
 
         with open(self.path_config / "logging_config.yml", "r") as f:
             config = yaml.safe_load(f.read())
-            config["handlers"]["file"]["filename"] = self.path_log / log_file_name
+            log_file = self.path_log / log_file_name
+            config["handlers"]["file"]["filename"] = log_file
 
             logging.config.dictConfig(config)
             self.logger = logging.getLogger("root")
